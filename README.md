@@ -3,8 +3,8 @@
 Raspberry Pi 3 Model Bでモータードライバ（TA7291P）を制御し、DCモータの正転・逆転・ストップ・ブレーキをコントロールした. 
 ### 動作環境 
 | OS | Ubuntu20.04 server |
-|:-|:-|
-| ハードウェア |Raspberry Pi 3 Model B|
+|:-:|:-:|
+| ハードウェア | Raspberry Pi 3 Model B |
 ### インストール方法
 ```
 git clone https://github.com/RikuUchida/robosys_device_driver.git
