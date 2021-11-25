@@ -35,7 +35,7 @@ sudo rhmod myled
 ```
 ### 実行結果
 以下のリンクからyoutubeの動画が見れます.   
-http
+https://www.youtube.com/watch?v=JKLvKj3DNkU
 ### 参考
 以下のデータシートを参照しました．  
 TA7291P  
