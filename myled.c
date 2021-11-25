@@ -5,8 +5,8 @@
 #include<linux/uaccess.h>
 #include<linux/io.h>
 
-MODULE_AUTHOR("Ryuichi Ueda & Riku Uchida");
-MODULE_DESCRIPTION("driver for LED control");
+MODULE_AUTHOR("Riku Uchida & Ryuichi Ueda");
+MODULE_DESCRIPTION("driver for motor control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
 
