@@ -4,13 +4,13 @@ Raspberry Pi 3 Model Bでモータードライバ（TA7291P）を制御し、DC�
 ### 動作環境 
 | OS | Ubuntu20.04 server |
 |:-|:-|
-| ハードウェア |Raspberry Pi Model3B+|
-### インストール
+| ハードウェア |Raspberry Pi 3 Model B|
+### インストール方法
 ```
 git clone https://github.com/RikuUchida/robosys_device_driver.git
 cd robosys_device_driver
 ```
-### ビルド
+### ビルド方法
 ```
 make
 sudo insmod myled.ko
@@ -33,3 +33,12 @@ echo 0 > /dev/myled0
 ```
 sudo rhmod myled
 ```
+### 実行結果
+以下のリンクからyoutubeの動画が見れます.   
+http
+### 参考
+以下のデータシートを参照しました．  
+TA7291P  
+https://www.marutsu.co.jp/contents/shop/marutsu/datasheet/ta7291.pdf  
+Raspberry Pi 3 Model B  
+https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-reduced-schematics.pdf
