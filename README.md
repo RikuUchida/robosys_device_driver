@@ -37,7 +37,7 @@ echo 0 > /dev/myled0
 ```
 ### ドライバのアンインストール
 ```
-sudo rhmod myled
+sudo rmmod myled
 ```
 ### 実行結果
 以下のリンクからyoutubeの動画が見れます.   

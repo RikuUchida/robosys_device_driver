@@ -5,8 +5,8 @@
 #include<linux/uaccess.h>
 #include<linux/io.h>
 
-MODULE_AUTHOR("Riku Uchida & Ryuichi Ueda");
-MODULE_DESCRIPTION("driver for motor control");
+MODULE_AUTHOR("Ryuichi Ueda & Riku Uchida");
+MODULE_DESCRIPTION("driver for LED control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
 
@@ -17,7 +17,7 @@ static volatile u32 *gpio_base = NULL;
 
 static int usegpio[2] = {24,25};
 
-static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
+static ssize_t motor_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
     char c;
     if(copy_from_user(&c, buf, sizeof(char)))
@@ -38,56 +38,42 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
     return 1;
 }
 
-static ssize_t sushi_read(struct file* filp, char* buf, size_t count, loff_t* pos)
-{
-    int size = 0;
-    char sushi[] = {'s','u','s','h','i',0x0A};
-    if(copy_to_user(buf+size,(const char *)sushi, sizeof(sushi))){
-        printk(KERN_ERR "sushi : copy_to_user failed\n");
-        return -EFAULT;
-    }
-    size += sizeof(sushi);
-    return size;
-
-}
-
-static struct file_operations led_fops = {
+static struct file_operations motor_fops = {
     .owner = THIS_MODULE,
-    .write = led_write,
-    .read  = sushi_read
+    .write = motor_write,
 };
 
 static int __init init_mod(void)
 {
     int retval;
-    retval = alloc_chrdev_region(&dev, 0, 1, "myled");
+    retval = alloc_chrdev_region(&dev, 0, 1, "mymotor");
     if(retval < 0){
         printk(KERN_ERR "alloc_chrdev_region failed.\n");
         return retval;
     }
     printk(KERN_INFO "%s is loaded. major:%d\n",__FILE__,MAJOR(dev));
 
-    cdev_init(&cdv, &led_fops);
+    cdev_init(&cdv, &motor_fops);
     retval = cdev_add(&cdv, dev, 1);
     if(retval < 0){
         printk(KERN_ERR "cdev_add failed. major:%d, minor:%d",MAJOR(dev),MINOR(dev));
         return retval;
     }
 
-    cls = class_create(THIS_MODULE, "myled");
+    cls = class_create(THIS_MODULE, "mymotor");
     if(IS_ERR(cls)){
         printk(KERN_ERR "class_create failed.");
         return PTR_ERR(cls);
     }
-    device_create(cls, NULL, dev, NULL, "myled%d", MINOR(dev));
+    device_create(cls, NULL, dev, NULL, "mymotor%d", MINOR(dev));
 
     gpio_base = ioremap_nocache(0x3f200000, 0xA0);
     
     int i;
     for(i = 0; i < 2; i++){
-        const u32 led = usegpio[i];
-        const u32 index = led/10;
-        const u32 shift = (led%10)*3;
+        const u32 motor = usegpio[i];
+        const u32 index = motor/10;
+        const u32 shift = (motor%10)*3;
         const u32 mask = ~(0x7 << shift);
         gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);
     }
