@@ -1,6 +1,6 @@
-obj-m := myled.o
+obj-m := mymotor.o
 
-myled.ko: myled.c
+mymotor.ko: mymotor.c
 	make -C /usr/src/linux-headers-`uname -r` M=`pwd` V=1 modules
 
 clean:

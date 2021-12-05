@@ -19,29 +19,29 @@ cd robosys_device_driver
 ### ビルド方法
 ```
 make
-sudo insmod myled.ko
-sudo chmod 666 /dev/myled0
+sudo insmod mymotor.ko
+sudo chmod 666 /dev/mymotor0
 ```
 ### 実行方法
 正転
 ```
-echo w > /dev/myled0
+echo w > /dev/mymotor0
 ```
 逆転
 ```
-echo s > /dev/myled0
+echo s > /dev/mymotor0
 ```
 ストップ
 ```
-echo 0 > /dev/myled0
+echo 0 > /dev/mymotor0
 ```
 ### ドライバのアンインストール
 ```
-sudo rhmod myled
+sudo rmmod mymotor
 ```
 ### 実行結果
 以下のリンクからyoutubeの動画が見れます.   
-https://www.youtube.com/watch?v=JKLvKj3DNkU
+https://www.youtube.com/watch?v=yDzHNiZYxjU
 ### 参考
 以下のサイトを参照しました．  
 TA7291P  
