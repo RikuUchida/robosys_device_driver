@@ -41,7 +41,7 @@ sudo rmmod mymotor
 ```
 ### 実行結果
 以下のリンクからyoutubeの動画が見れます.   
-https://www.youtube.com/watch?v=JKLvKj3DNkU
+https://www.youtube.com/watch?v=yDzHNiZYxjU
 ### 参考
 以下のサイトを参照しました．  
 TA7291P  
