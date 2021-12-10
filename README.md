@@ -11,13 +11,10 @@ Raspberry Pi 3 Model Bでモータードライバ（TA7291P）を制御し、DC�
 下の図のように配線しました.   
 ![robosys](https://user-images.githubusercontent.com/54020567/144742794-69617586-27d9-42d7-b9f7-e81eaae5dc4a.png)
 
-### インストール方法
+### インストール&ビルド方法
 ```
 git clone https://github.com/RikuUchida/robosys_device_driver.git
 cd robosys_device_driver
-```
-### ビルド方法
-```
 make
 sudo insmod mymotor.ko
 sudo chmod 666 /dev/mymotor0
